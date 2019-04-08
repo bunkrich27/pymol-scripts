@@ -8,7 +8,7 @@ USAGE
 
   scanDamage nucleosome object,
              UVDDB probe object,
-             distance in Ångstrom below which atoms are considered clashing,
+             distance in Ångstrom closer than which atoms are considered clashing,
              keep models with fewer than the specified number of clashes
 
   """

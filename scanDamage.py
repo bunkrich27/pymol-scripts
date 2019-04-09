@@ -6,10 +6,11 @@ def scanDamage( nucleosome, uvddb, cutoff=2, clashKeep=1, writeModels=False ):
   """
 USAGE
 
-  scanDamage nucleosome object,
-             UVDDB probe object,
+  scanDamage nucleosome object (DNA in chains I and J),
+             UVDDB probe object (containing appropriately positioned 2 bp ssDNA in chain Z as residues 1-2 for superpositioning),
              distance in Ångstrom closer than which atoms are considered clashing,
-             keep models with fewer than the specified number of clashes
+             keep models with fewer than the specified number of clashes,
+             write all models (for scoring externally for instance) 
 
   """
    

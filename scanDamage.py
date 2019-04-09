@@ -35,7 +35,7 @@ USAGE
           matchedChain = 'I'
 
 
-        # Handle lack of 5' phosphate on first base
+        # Handle lack of 5' phosphate on first nucleotide
         if i == 0: 
            cmd.select("moving", "%s and chain Z and resi 2 and backbone and not (n. P or n. OP1 or n. OP2)" % (uvddb) )
            cmd.select("target", "%s and chain %s and resi %d and backbone and not (n. P or n. OP1 or n. OP2)" % (nucleosome, chain, j) )
@@ -64,13 +64,13 @@ USAGE
         # print(" ".join('%s' % x for x in alignResult))
 
         clashes=("clashes")
-        # Calculate clashes excluding DNA portion (chain Z resi 1-2) of UVDDB probe
+        # Calculate clashes excluding DNA portion (chain Z resi 1-2) of UV-DDB probe
         cmd.select("%s" % (clashes), "(%s and not chain Z) within %d of %s" % (uvddb, float(cutoff), nucleosome) )
         scoreAtoms = (cmd.count_atoms("%s" % (clashes) ))
         cmd.select("%s" % (clashes), "clashes byres clashes")
         scoreRes = (cmd.count_atoms("%s" % (clashes) + " and name CA"))
 
-        # Write out models (nuclesome + current superimposed probe) for Rosetta scoring 
+        # Write out models (nucleosome + current superimposed UV-DDB probe) for Rosetta scoring 
         if  writeModels :
           modelName = None
           modelName = ("%s_uvddb_%s_%d-%d" % (nucleosome, chain, i, j) )
